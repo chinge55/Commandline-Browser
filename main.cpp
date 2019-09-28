@@ -16,11 +16,14 @@ int main(int argc, char** argv)
 		exit(0);
 	cout <<"File Opened"<<endl;
 	char *something = new char[buffer_size];
-	inputfile >> *something;
-	cout << *something << endl;
+	while(inputfile.get(*something))
+	{
+		cout.put(*something);
+	}
+
 
 	// cout << something << endl;
-	// cout << *something << endl;
+	cout << *something << endl;
 	// cout << &something << endl;
 	// inputfile >> something;
 	// cout << something << endl;
