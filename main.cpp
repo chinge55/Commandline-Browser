@@ -1,6 +1,5 @@
 #include <iostream>
 #include <fstream>
-#include "Lexer.h"
 using namespace std;
 
 int main(int argc, char** argv)
@@ -16,19 +15,13 @@ int main(int argc, char** argv)
 		exit(0);
 	cout <<"File Opened"<<endl;
 	char *something = new char[buffer_size];
-	while(inputfile.get(*something))
+	char *a = something;
+	while(!inputfile.eof())
 	{
+		*something = inputfile.get();	
 		cout.put(*something);
+		something++;
 	}
-
-
-	// cout << something << endl;
-	cout << *something << endl;
-	// cout << &something << endl;
-	// inputfile >> something;
-	// cout << something << endl;
-
-	//TODO: Need to do something for whitespace, but leave it for now
-	//Lexer *lexer = new Lexer(something);
+	cout << a << endl;
 	return 0;
 }
