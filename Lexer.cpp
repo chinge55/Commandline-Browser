@@ -1,20 +1,48 @@
 #include "Lexer.h"
-#include <sstream>
 #include <iostream>
+#include <cstring>
 using namespace std;
-Lexer::Lexer(char* data)
+Lexer::Lexer(string &inputstring)
 {
-	std::stringstream stream1;
-	if(*data =='<')
+	
+	this->inputstr = inputstring;
+	string* str = &inputstring;
+	delete str;
+	//cout << (this->inputstr) << endl;
+	evaluate_token();
+}
+void Lexer::inc_pointer()
+{
+	if(str_pointer>=inputstr.size())
+		showerror("pointer maxed");
+	else
+		str_pointer++;
+}
+void Lexer::dec_pointer()
+{
+	if(str_pointer<=0)
+		showerror("pointer min");
+	else
+		str_pointer--;
+}
+void Lexer::evaluate_token()
+{
+	switch(inputstr[str_pointer])
 	{
-		data++;
-		while(*data!='>')
-		{
-			stream1 << *data;
-			data++;
-		}
+		case '<':
+			str_pointer++;
+			checkfirst();
+		default:
+			showerror("FIrst value Error");
 	}
-	string stringfile;
-	stream1 >> stringfile;
-	cout << stringfile<<endl;
+}
+void Lexer::checkfirst()
+{
+	switch(inputstr[str_pointer])
+	{
+		case 'h':
+			str_pointer++;
+			cout << "Correct till now";
+			cout << str_pointer << endl;
+	}
 }
