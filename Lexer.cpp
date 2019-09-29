@@ -30,7 +30,7 @@ void Lexer::evaluate_token()
 	switch(inputstr[str_pointer])
 	{
 		case '<':
-			str_pointer++;
+			inc_pointer();
 			checkfirst();
 		default:
 			showerror("FIrst value Error");
@@ -41,7 +41,7 @@ void Lexer::checkfirst()
 	switch(inputstr[str_pointer])
 	{
 		case 'h':
-			str_pointer++;
+			inc_pointer();
 			cout << "Correct till now";
 			cout << str_pointer << endl;
 	}
