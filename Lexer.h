@@ -26,6 +26,7 @@ public:
 			void checkforbody();
 			void checkforbr();
 		void checkforp();
+		void checkforstring();
 
 
 };

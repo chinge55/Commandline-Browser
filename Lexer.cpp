@@ -55,11 +55,25 @@ void Lexer::evaluate_token()
 				inc_pointer();
 				checkfirst();
 				break;
+			case '\n':
+				inc_pointer();
+				break;
+			case ' ':
+				inc_pointer();
+				break;
 			default:
-				showerror("Error in Evaluate_token");
+				checkforstring();
 				break;
 		}
 	}
+}
+void Lexer::checkforstring()
+{
+	while(inputstr[str_pointer]!='<')
+	{
+		cout << inputstr[str_pointer];
+		inc_pointer();
+	}	
 }
 void Lexer::checkfirst()
 {
@@ -224,7 +238,7 @@ void Lexer::checkforhtml()
 void Lexer:: checkforhead()
 {
 	string temp = inputstr.substr(str_pointer,str_pointer+3);
-
+	inc_pointer(3);
 	if(temp.compare("ad>"))
 	{
 		cout << "Head Start" << endl;
@@ -239,12 +253,19 @@ void Lexer:: checkforhead()
 }
 void Lexer:: checkforh1()
 {
-	cout << "h1 found"<< endl;
+
+	if(inputstr[str_pointer]=='>')
+	{
+		inc_pointer();
+		cout << "h1 found"<< endl;
+	}
+	
 	// Push h1 to the stack
 	// Make arrangements for h>10 and I also don't know whether h1 can be used twice or not
 }
 
 void Lexer::showerror(string error)
 {
-
+	cout << error << endl;
+	exit(0);
 }
