@@ -1,33 +1,16 @@
 #include <iostream>
 #include <cstring>
 using namespace std;
-const string str = "<html> </html> sangamkhanal <!fuck!>";
+const string str = "1abc2";
 int pointer = 0;
-void checkforh()
-{
-  switch(str[pointer])
-  {
-    case 't':
-      cout << "html found"<< endl;
-  }
-}
-void isopen()
-{
-  switch(str[pointer])
-  {
-    case 'h':
-      pointer++;
-      checkforh();
-  }
-}
 int main()
 {
+  cout << str[pointer]<< endl;
+  int a = (int)str[pointer];
+  cout << a << endl;
   switch(str[pointer])
   {
-    case '<':
-      pointer++;
-      isopen();
-
+    case ('1'||'2'):
+      cout << "done" << endl;
   }
-
 }
