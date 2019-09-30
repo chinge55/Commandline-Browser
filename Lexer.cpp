@@ -11,6 +11,9 @@ Lexer::Lexer(string &inputstring)
 	
 	//cout << (this->inputstr) << endl;
 	evaluate_token();
+	// evaluate_token();
+	// evaluate_token();
+	
 }
 void Lexer::inc_pointer()
 {
@@ -44,15 +47,18 @@ void Lexer::dec_pointer(int value)
 }
 void Lexer::evaluate_token()
 {
-	switch(inputstr[str_pointer])
-	{
-		case '<':
-			inc_pointer();
-			checkfirst();
-			break;
-		default:
-			showerror("Error in Evaluate_token");
-			break;
+	while(str_pointer<=inputstr.size())
+	{	
+		switch(inputstr[str_pointer])
+		{
+			case '<':
+				inc_pointer();
+				checkfirst();
+				break;
+			default:
+				showerror("Error in Evaluate_token");
+				break;
+		}
 	}
 }
 void Lexer::checkfirst()
@@ -77,6 +83,7 @@ void Lexer::checkfirst()
 			break;
 		case '/':
 			cout <<"Start deletionkfk, everything correct till now"<<endl;
+			exit(0);
 			break;
 			// Start deleting from the stack
 		default:
