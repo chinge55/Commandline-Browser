@@ -6,22 +6,21 @@ Lexer::Lexer(string &inputstring)
 {
 	
 	this->inputstr = inputstring;
-	string* str = &inputstring;
-	delete str;
+	
 	//cout << (this->inputstr) << endl;
 	evaluate_token();
 }
 void Lexer::inc_pointer()
 {
 	if(str_pointer>=inputstr.size())
-		showerror("pointer maxed");
+		showerror(1);
 	else
 		str_pointer++;
 }
 void Lexer::dec_pointer()
 {
 	if(str_pointer<=0)
-		showerror("pointer min");
+		showerror(2);
 	else
 		str_pointer--;
 }
@@ -33,7 +32,7 @@ void Lexer::evaluate_token()
 			inc_pointer();
 			checkfirst();
 		default:
-			showerror("FIrst value Error");
+			showerror(3);
 	}
 }
 void Lexer::checkfirst()
@@ -45,4 +44,8 @@ void Lexer::checkfirst()
 			cout << "Correct till now";
 			cout << str_pointer << endl;
 	}
+}
+void Lexer::showerror(int err_no)
+{
+
 }

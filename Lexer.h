@@ -7,7 +7,7 @@ private:
 public:
 	Lexer(std::string &inputstring);
 	void evaluate_token();
-	void showerror(std::string error);
+	void showerror(int err_no);
 	// checking start
 	void checkfirst();
 	void inc_pointer();
