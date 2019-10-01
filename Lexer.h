@@ -6,6 +6,7 @@ private:
 	std::string inputstr;
 	int str_pointer = 0;
 	Stack *stack;
+	bool deletion_token = false;
 	// int var_no[];
 	// int var_pointer[];
 public:

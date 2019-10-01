@@ -2,7 +2,6 @@
 #include <iostream>
 #include <cstring>
 using namespace std;
-//TODO: Create a function that takes in different parameters for different html tags and pushes all of them into the stack
 //TODO: Create a similar function to delete them from the stack
 Lexer::Lexer(string &inputstring)
 {
@@ -49,22 +48,24 @@ void Lexer::dec_pointer(int value)
 void Lexer::evaluate_token()
 {
 	while(str_pointer<=inputstr.size())
-	{	
-		switch(inputstr[str_pointer])
+	{	if(deletion_token!=true)
 		{
-			case '<':
-				inc_pointer();
-				checkfirst();
-				break;
-			case '\n':
-				inc_pointer();
-				break;
-			case ' ':
-				inc_pointer();
-				break;
-			default:
-				checkforstring();
-				break;
+			switch(inputstr[str_pointer])
+			{
+				case '<':
+					inc_pointer();
+					checkfirst();
+					break;
+				case '\n':
+					inc_pointer();
+					break;
+				case ' ':
+					inc_pointer();
+					break;
+				default:
+					checkforstring();
+					break;
+			}
 		}
 	}
 }
@@ -86,23 +87,30 @@ void Lexer::checkfirst()
 	{
 		case 'h':
 			inc_pointer();
+			deletion_token = false;
 			checkforh();
 			break;
 		case 't':
 			inc_pointer();
+			deletion_token = false;
 			checkfort();
 			break;
 		case 'b':
 			inc_pointer();
+			deletion_token = false;
 			checkforb();
 			break;
 		case 'p':
 			inc_pointer();
+			deletion_token = false;
 			checkforp();
 			break;
 		case '/':
 			cout <<"Start deletionkfk, everything correct till now"<<endl;
-			exit(0);
+			// exit(0);
+			deletion_token= true;
+			inc_pointer();
+			checkfirst();
 			break;
 			// Start deleting from the stack
 		default:
