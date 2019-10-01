@@ -122,6 +122,7 @@ void Lexer::checkforp()
 {
 	if(inputstr[str_pointer]=='>')
 	{
+		inc_pointer();
 		cout << "P found "<< endl;
 		stack->push(TAG_P);
 	}
