@@ -70,11 +70,15 @@ void Lexer::evaluate_token()
 }
 void Lexer::checkforstring()
 {
+	string final_string;
 	while(inputstr[str_pointer]!='<')
 	{
-		cout << inputstr[str_pointer];
+		//cout << inputstr[str_pointer];
+		final_string = final_string+inputstr[str_pointer];
 		inc_pointer();
 	}	
+	stack->push(final_string);
+	cout << final_string << endl;
 }
 void Lexer::checkfirst()
 {
@@ -142,6 +146,7 @@ void Lexer::checkforbody()
 	if(temp.compare("dy>"))
 	{
 		cout << "Body Found"<< endl;
+		stack->push(TAG_BODY);
 	}
 	else
 	{
@@ -228,7 +233,7 @@ void Lexer::checkforhtml()
 	if(temp.compare("ml>"))
 	{
 		cout << "Html Starts"<< endl;
-		// push html to stack
+		stack->push(TAG_HTML);
 	}
 	else
 	{
@@ -243,7 +248,7 @@ void Lexer:: checkforhead()
 	if(temp.compare("ad>"))
 	{
 		cout << "Head Start" << endl;
-		// Push head to the stack
+		stack->push(TAG_HEAD);
 	}
 	else
 	{
@@ -259,6 +264,7 @@ void Lexer:: checkforh1()
 	{
 		inc_pointer();
 		cout << "h1 found"<< endl;
+		stack->push(TAG_H);
 	}
 	
 	// Push h1 to the stack
