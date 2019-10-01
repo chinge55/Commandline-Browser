@@ -8,7 +8,8 @@ Lexer::Lexer(string &inputstring)
 {
 	
 	this->inputstr = inputstring;
-	
+	Stack *stack = new Stack();
+	this->stack = stack;
 	//cout << (this->inputstr) << endl;
 	evaluate_token();
 	// evaluate_token();
@@ -110,7 +111,7 @@ void Lexer::checkforp()
 	if(inputstr[str_pointer]=='>')
 	{
 		cout << "P found "<< endl;
-		// Add p to the stack
+		stack->push(TAG_P);
 	}
 	else
 	{
@@ -152,7 +153,7 @@ void Lexer::checkforbr()
 	if(inputstr[str_pointer]=='>')
 	{
 		cout << "Br found"<< endl;
-		//Push this to the stack
+		stack->push(TAG_BR);
 	}
 	else
 	{
@@ -182,7 +183,7 @@ void Lexer::checkfortitle()
 	if(temp.compare("tle>"))
 	{
 		cout << "Title found"<< endl;
-		// Push title to the stack
+		stack->push(TAG_TITLE);
 	}
 	else
 	{

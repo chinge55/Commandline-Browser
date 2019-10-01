@@ -1,16 +1,25 @@
 #include <iostream>
-#include <cstring>
+#include "Stack.h"
 using namespace std;
-const string str = "1abc2";
-int pointer = 0;
 int main()
 {
-  cout << str[pointer]<< endl;
-  int a = (int)str[pointer];
-  cout << a << endl;
-  switch(str[pointer])
-  {
-    case ('1'||'2'):
-      cout << "done" << endl;
-  }
+    Stack *s = new Stack();
+    s->push(1);
+    s->push(2);
+    s->push("Sangam");
+    s->push(1);
+    s->push("DAI");
+    while(!s->isEmpty())
+    {
+        int i = s->pop();
+         if(i==21)
+        {
+            cout << s->showString()<<endl;
+        }
+        else 
+        {
+            cout << i<<endl;
+        }
+
+    }
 }

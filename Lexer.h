@@ -1,9 +1,11 @@
 #include <iostream>
+#include "Stack.h"
 class Lexer
 {
 private:
 	std::string inputstr;
 	int str_pointer = 0;
+	Stack *stack;
 	// int var_no[];
 	// int var_pointer[];
 public:

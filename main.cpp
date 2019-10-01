@@ -22,5 +22,6 @@ int main(int argc, char** argv)
 		str = str + sth;
 	}
 	Lexer *l = new Lexer(str);
+	//TODO: Do not start Parsing from the constructor but call evaluate_token from here
 	return 0;
 }
