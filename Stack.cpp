@@ -26,9 +26,9 @@ bool Stack::push(int num)
 {
     if(!isFull())
     {
-        top++;
-        stack[top]=num;
         
+        stack[top]=num;
+        top++;
         return true;
     }
     return false;
@@ -37,11 +37,12 @@ bool Stack::push(string str)
 {
     if(!isFull())
     {
-         top++;
+         
         string data =str;
         stack[top] = TAG_STRING;
         cout <<data << "pushed " <<"at "<<top<< endl;  
         stringarr.push_back(data);
+        top++;
     }
 }
 int Stack::pop()

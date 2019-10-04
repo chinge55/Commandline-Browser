@@ -7,9 +7,9 @@ int main(int argc, char** argv)
 {
 	const char* filename;
 	const int buffer_size = 50;
-	if(argc!=2)
-		exit(0);
-	filename = argv[1];
+	// if(argc!=2)
+	// 	exit(0);
+	filename = "testfile";
 	ifstream inputfile;
 	inputfile.open(filename, ios::in);
 	if(!inputfile.is_open())
@@ -22,6 +22,7 @@ int main(int argc, char** argv)
 		str = str + sth;
 	}
 	Lexer *l = new Lexer(str);
+	cout << "Done"<< endl;
 	//TODO: Do not start Parsing from the constructor but call evaluate_token from here
 	return 0;
 }

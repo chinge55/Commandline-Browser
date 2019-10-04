@@ -79,6 +79,7 @@ void Lexer::checkforstring()
 		inc_pointer();
 	}	
 	stack->push(final_string);
+	deletion_token = false;
 	cout << final_string << endl;
 }
 void Lexer::checkfirst()
@@ -87,22 +88,22 @@ void Lexer::checkfirst()
 	{
 		case 'h':
 			inc_pointer();
-			deletion_token = false;
+			//deletion_token = false;
 			checkforh();
 			break;
 		case 't':
 			inc_pointer();
-			deletion_token = false;
+			//deletion_token = false;
 			checkfort();
 			break;
 		case 'b':
 			inc_pointer();
-			deletion_token = false;
+			//deletion_token = false;
 			checkforb();
 			break;
 		case 'p':
 			inc_pointer();
-			deletion_token = false;
+			//deletion_token = false;
 			checkforp();
 			break;
 		case '/':
@@ -124,7 +125,12 @@ void Lexer::checkforp()
 	{
 		inc_pointer();
 		cout << "P found "<< endl;
-		stack->push(TAG_P);
+		if(deletion_token ==false)
+			stack->push(TAG_P);
+		else
+			stack->push(TAG_PEND);
+		
+		deletion_token = false;
 	}
 	else
 	{
@@ -155,7 +161,11 @@ void Lexer::checkforbody()
 	if(temp.compare("dy>"))
 	{
 		cout << "Body Found"<< endl;
-		stack->push(TAG_BODY);
+		if(deletion_token ==false)
+			stack->push(TAG_BODY);
+		else
+			stack->push(TAG_BODYEND);
+		deletion_token = false;
 	}
 	else
 	{
@@ -167,7 +177,11 @@ void Lexer::checkforbr()
 	if(inputstr[str_pointer]=='>')
 	{
 		cout << "Br found"<< endl;
-		stack->push(TAG_BR);
+		if(deletion_token ==false)
+			stack->push(TAG_BR);
+		else
+			stack->push(TAG_BREND);
+		deletion_token = false;
 	}
 	else
 	{
@@ -197,7 +211,11 @@ void Lexer::checkfortitle()
 	if(temp.compare("tle>"))
 	{
 		cout << "Title found"<< endl;
-		stack->push(TAG_TITLE);
+		if(deletion_token ==false)
+			stack->push(TAG_TITLE);
+		else
+			stack->push(TAG_TITLEEND);
+		deletion_token = false;
 	}
 	else
 	{
@@ -242,7 +260,11 @@ void Lexer::checkforhtml()
 	if(temp.compare("ml>"))
 	{
 		cout << "Html Starts"<< endl;
-		stack->push(TAG_HTML);
+		if(deletion_token ==false)
+			stack->push(TAG_HTML);
+		else
+			stack->push(TAG_HTMLEND);
+		deletion_token = false;
 	}
 	else
 	{
@@ -257,7 +279,11 @@ void Lexer:: checkforhead()
 	if(temp.compare("ad>"))
 	{
 		cout << "Head Start" << endl;
-		stack->push(TAG_HEAD);
+		if(deletion_token ==false)
+			stack->push(TAG_HEAD);
+		else
+			stack->push(TAG_HEADEND);
+		deletion_token = false;
 	}
 	else
 	{
@@ -273,7 +299,11 @@ void Lexer:: checkforh1()
 	{
 		inc_pointer();
 		cout << "h1 found"<< endl;
-		stack->push(TAG_H);
+		if(deletion_token ==false)
+			stack->push(TAG_H);
+		else
+			stack->push(TAG_HEND);
+		deletion_token = false;
 	}
 	
 	// Push h1 to the stack

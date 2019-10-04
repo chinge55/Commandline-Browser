@@ -1,10 +1,7 @@
 all:
-	g++ main.cpp Lexer.h Lexer.cpp
+	g++ main.cpp Lexer.h Lexer.cpp Stack.h Stack.cpp 
 debug:
-	g++ -c main.cpp
-	g++ -c Lexer.h
-	g++ -c Lexer.cpp
-	g++ main.o Lexer.o 
+	g++ -g main.cpp Lexer.h Lexer.cpp Stack.h Stack.cpp
 
 clean:
 	rm *.o *.gch *.out
