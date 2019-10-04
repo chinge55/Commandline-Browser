@@ -17,6 +17,7 @@ public:
 	void inc_pointer(int value);
 	void dec_pointer();
 	void dec_pointer(int value);
+	Stack* getStack();
 	// checking start
 	void checkfirst();
 		void checkforh();

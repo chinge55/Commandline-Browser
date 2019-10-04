@@ -59,7 +59,7 @@ int Stack::pop()
 int Stack::peek()
 {
     if(!isEmpty())
-        return stack[top];
+        return stack[top-1];
     else
         return ERROR_TAG;
 }

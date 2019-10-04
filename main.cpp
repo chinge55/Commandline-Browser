@@ -1,6 +1,8 @@
 #include <iostream>
 #include <fstream>
 #include "Lexer.h"
+#include "Parser.h"
+#include "Stack.h"
 using namespace std;
 
 int main(int argc, char** argv)
@@ -23,6 +25,8 @@ int main(int argc, char** argv)
 	}
 	Lexer *l = new Lexer(str);
 	cout << "Done"<< endl;
+	Stack *s = l->getStack();
+	Parser *p = new Parser(s);
 	//TODO: Do not start Parsing from the constructor but call evaluate_token from here
 	return 0;
 }

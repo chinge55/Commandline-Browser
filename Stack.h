@@ -8,6 +8,8 @@ p = 5
 br = 6
 string = 21
 */
+#ifndef STACK_H
+#define STACK_H
 #include <vector> 
 #include <iostream>
 using namespace std;
@@ -47,3 +49,4 @@ class Stack
         bool isFull();
 
 };
+#endif

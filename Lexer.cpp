@@ -1,4 +1,5 @@
 #include "Lexer.h"
+#include "Stack.h"
 #include <iostream>
 #include <cstring>
 using namespace std;
@@ -66,7 +67,8 @@ void Lexer::evaluate_token()
 					checkforstring();
 					break;
 			}
-		}
+		}else if(stack->peek() ==-1)
+			return;
 	}
 }
 void Lexer::checkforstring()
@@ -263,8 +265,13 @@ void Lexer::checkforhtml()
 		if(deletion_token ==false)
 			stack->push(TAG_HTML);
 		else
+		{
 			stack->push(TAG_HTMLEND);
-		deletion_token = false;
+			deletion_token = true;
+			return;
+		}
+			
+		//deletion_token = false;
 	}
 	else
 	{
@@ -314,4 +321,8 @@ void Lexer::showerror(string error)
 {
 	cout << error << endl;
 	exit(0);
+}
+Stack* Lexer::getStack()
+{
+	return this->stack;
 }
